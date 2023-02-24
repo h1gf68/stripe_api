@@ -1,0 +1,54 @@
+{% extends 'payments/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Your shopping cart</h1>
+    <table class="cart">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+            <th>Unit price</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for it in cart %}
+            {% with item=it.item %}
+                <tr>
+                    <td>
+                        <a href="{{ item.get_absolute_url }}">
+                            <img src="
+                                {% if item.image %}
+                                    {{ item.image.url }}
+                                {% else %}
+                                    {% static 'payments/img/no_image.jpg' %}
+                                {% endif %}">
+                        </a>
+                    </td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ it.quantity }}</td>
+                    <td><a href="{% url 'cart_remove' item.id% }">Remove</a></td>
+                    <td class="num">${{ it.price }}</td>
+                    <td class="num">${{ it.total_price }}</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">${{ cart.get_total_price }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url 'index' %}" class="button light">Continue shopping</a>
+        {% if user.is_authenticated %}
+            <button type="submit" class="btn btn-primary" id="submitBtn">Buy</button>
+        {% else %}
+            <button type="submit" class="btn btn-primary" id="submitBtn"><a href="{% url 'login' %}">Login to Buy</a></button>
+        {% endif %}
+    </p>
+{% endblock %}

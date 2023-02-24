@@ -3,13 +3,14 @@
 {% block content %}
 <div class="product-item">
     <h3>{{ item.name }}</h3>
-    <div>{{ item.price }} $</div>
     <div>{{ item.description }}</div>
-    {% if user.is_authenticated %}
-        <button type="submit" class="btn btn-primary" id="submitBtn">Buy</button>
-    {% else %}
-        <button type="submit" class="btn btn-primary" id="submitBtn"><a href="{% url 'login' %}">Login to Buy</a></button>
-    {% endif %}
+    <p class="price">${{ item.price }}</p>
+    <form action="{% url 'cart_add' item.id %}" method="post">
+        {{ cart_item_form }}
+        {% csrf_token %}
+        <input type="submit" value="Add to cart">
+    </form>
 </div>
+
 
 {% endblock content %}
