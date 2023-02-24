@@ -1,0 +1,15 @@
+{% extends 'payments/base.html' %}
+
+{% block content %}
+<div class="product-item">
+    <h3>{{ item.name }}</h3>
+    <div>{{ item.price }} $</div>
+    <div>{{ item.description }}</div>
+    {% if user.is_authenticated %}
+        <button type="submit" class="btn btn-primary" id="submitBtn">Buy</button>
+    {% else %}
+        <button type="submit" class="btn btn-primary" id="submitBtn"><a href="{% url 'login' %}">Login to Buy</a></button>
+    {% endif %}
+</div>
+
+{% endblock content %}

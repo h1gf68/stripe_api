@@ -1,0 +1,7 @@
+.products, .product-item {
+    margin: 10px 20px;
+}
+.product-item a {
+  color: white;
+  text-decoration: none;
+}
