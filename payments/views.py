@@ -29,6 +29,7 @@ class ItemDetailView(generic.DetailView):
         return context
 
 
+# ---------- STRIPE ----------
 def success(request):
     return render(request, 'payments/success.html')
 
@@ -119,7 +120,7 @@ def cart_add(request, item_id):
         cart.add(item=item,
                  quantity=cd['quantity'],
                  update_quantity=cd['update'])
-    return redirect('cart_detail')
+    return redirect(request.META['HTTP_REFERER'])
 
 
 def cart_remove(request, item_id):
@@ -136,6 +137,8 @@ def cart_detail(request):
 
 def order_create(request):
     cart = Cart(request)
+    if not len(cart):
+        return redirect('index')
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
@@ -151,5 +154,6 @@ def order_create(request):
             return render(request, 'payments/order_created.html', {'order': order})
     else:
         form = OrderCreateForm()
+
     return render(request, 'payments/order_create.html', {'cart': cart, 'form': form})
 

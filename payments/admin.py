@@ -9,7 +9,7 @@ class ItemAdmin(admin.ModelAdmin):
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['item']
-
+    extra = 0
 
 
 class OrderAdmin(admin.ModelAdmin):

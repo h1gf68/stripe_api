@@ -5,6 +5,13 @@
     <div class="content">
         <h1>Your shopping cart</h1>
         <table class="cart">
+            <thead>
+                <td>Изображение</td>
+                <td>Название</td>
+                <td>Количество</td>
+                <td>Цена</td>
+                <td>Цена*Количесто</td>
+            </thead>
             <tbody>
             {% for it in cart %}
                 {% with item=it.item %}
@@ -21,9 +28,10 @@
                         </td>
                         <td>{{ item.name }}</td>
                         <td>{{ it.quantity }}</td>
-                        <td><a href="{% url 'cart_remove' item.id %}">Remove</a></td>
                         <td class="num">${{ it.price }}</td>
                         <td class="num">${{ it.total_price }}</td>
+                        <td><a href="{% url 'cart_remove' item.id %}">Remove</a></td>
+
                     </tr>
                 {% endwith %}
             {% endfor %}

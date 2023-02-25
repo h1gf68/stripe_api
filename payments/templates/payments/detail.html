@@ -3,12 +3,12 @@
 {% block content %}
 <div class="content">
     <h3>{{ item.name }}</h3>
-    <div>{{ item.description }}</div>
     <p class="price">${{ item.price }}</p>
+    <div>{{ item.description }}</div>
     <form action="{% url 'cart_add' item.id %}" method="post">
         {{ cart_item_form }}
         {% csrf_token %}
-        <input type="submit" value="Add to cart">
+        <input type="submit" value="Добавить в корзину">
     </form>
 </div>
 

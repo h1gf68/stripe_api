@@ -8,3 +8,6 @@
 .cart img {
     height: 100px;
 }
+.cart td {
+    padding: 0 5px;
+}
