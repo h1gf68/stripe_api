@@ -4,8 +4,8 @@ fetch("/config/")
   const stripe = Stripe(data.publicKey);
   let submitBtn = document.querySelector("#submitBtn");
   if (submitBtn !== null) {
-    submitBtn.addEventListener("click", () => {
-    checkout_path = "/create-checkout-session/"+document.location.pathname.split("/")[2]+"/"
+    submitBtn.addEventListener("focus", () => {
+    checkout_path = "/create-checkout-session/"+order_id+"/"
     fetch(checkout_path)
       .then((result) => { return result.json(); })
       .then((data) => {
@@ -16,5 +16,6 @@ fetch("/config/")
         console.log(res);
       });
     });
+    submitBtn.focus();
   }
 });

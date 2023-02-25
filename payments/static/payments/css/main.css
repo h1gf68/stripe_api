@@ -1,7 +1,10 @@
-.products, .product-item {
+.content, .product-item {
     margin: 10px 20px;
 }
-.product-item a {
+.btn-primary a {
   color: white;
   text-decoration: none;
+}
+.cart img {
+    height: 100px;
 }
