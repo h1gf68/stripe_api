@@ -23,16 +23,17 @@
 
 Измените значения ключей в файле .env:
 
-Секретный ключ django например 
-SECRET_KEY="django-insecure-@7getf0x=opao)&=l)cw(@7@*5ryxjzp#o2osvh=r4$!gw0s#t"
+Секретный ключ django например
+<blockquote>SECRET_KEY="django-insecure-@7getf0x=opao)&=l)cw(@7@*5ryxjzp#o2osvh=r4$!gw0s#t"</blockquote>
 
 Публичный и секретный ключи stripe. Доступны после регистрации по адресу https://dashboard.stripe.com/test/apikeys
-
-STRIPE_PUBLIC_KEY=<YOUR_STRIPE_PUBLIC_KEY> 
+<blockquote>
+STRIPE_PUBLIC_KEY=<YOUR_STRIPE_PUBLIC_KEY><br/>
 STRIPE_SECRET_KEY=<YOUR_STRIPE_SECRET_KEY>
+</blockquote>
 
-Ключ STRIPE_ENDPOINT_SECRET необходим для подтвержения платежа.
-Чтобы получить этот ключ перейдите <a href="https://stripe.com/docs/stripe-cli">https://stripe.com/docs/stripe-cli</a> и повторите команды в зависимости от вашей операционной системы. 
+Ключ STRIPE_ENDPOINT_SECRET необходим для подтвержения платежа.<br/>
+Чтобы получить этот ключ перейдите https://stripe.com/docs/stripe-cli и повторите команды в зависимости от вашей операционной системы. 
 
 Затем в новом окне терминала запустите stripe на прослушивание (https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local)
 <pre>./stripe listen --forward-to localhost:8080/webhook</pre>
