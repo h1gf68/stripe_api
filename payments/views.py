@@ -6,7 +6,7 @@ from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
-from market.settings import STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_ENDPOINT_SECRET
+from market.settings import STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_ENDPOINT_SECRET, DOMAIN_URL
 from payments.cart import Cart
 from payments.forms import CartAddItemForm, OrderCreateForm
 from payments.models import Item, OrderItem, Order
@@ -20,7 +20,6 @@ class HomeListView(generic.ListView):
 class ItemDetailView(generic.DetailView):
     template_name = 'payments/detail.html'
     model = Item
-
     cart_item_form = CartAddItemForm()
 
     def get_context_data(self, **kwargs):
@@ -50,7 +49,7 @@ def stripe_config(request):
 @csrf_exempt
 def create_checkout_session(request, order_id):
     if request.method == 'GET':
-        domain_url = 'http://localhost:8000/'
+        domain_url = DOMAIN_URL
         stripe.api_key = STRIPE_SECRET_KEY
         try:
             order = Order.objects.get(pk=order_id)

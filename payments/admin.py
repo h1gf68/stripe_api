@@ -13,12 +13,16 @@ class OrderItemInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'paid',
-                    'created', 'updated']
+    list_display = ['id', 'user', 'paid', 'created', 'updated']
     list_filter = ['paid', 'created', 'updated']
     exclude = ['checkout_session']
     inlines = [OrderItemInline]
 
 
+class OrderItemModelAdmin(admin.ModelAdmin):
+    list_display = ['order', 'item', 'price', 'quantity']
+
+
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(OrderItem, OrderItemModelAdmin)

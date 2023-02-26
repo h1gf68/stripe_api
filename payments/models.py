@@ -17,6 +17,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
+    # сюда же можно добавить адрес, номер телефона ...
 
     def __str__(self):
         return 'Order {}'.format(self.id)
