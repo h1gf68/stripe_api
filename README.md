@@ -36,7 +36,7 @@ STRIPE_SECRET_KEY=sk_test_51Mdb...eVc
 Чтобы получить этот ключ перейдите https://stripe.com/docs/stripe-cli и повторите команды в зависимости от вашей операционной системы. 
 
 Затем в новом окне терминала запустите stripe на прослушивание (https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local)
-<pre>./stripe listen --forward-to localhost:8080/webhook</pre>
+<pre>./stripe listen --forward-to localhost:8080/webhook/</pre>
 В терминале отобразится ключ (например whsec_683...7a13ff), его нужно записать вместо <code><YOUR_STRIPE_ENDPOINT_SECRET></code>
   <blockquote>STRIPE_ENDPOINT_SECRET=whsec_683...7a13ff</blockquote>
 
