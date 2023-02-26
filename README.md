@@ -28,8 +28,8 @@
 
 Публичный и секретный ключи stripe. Доступны после регистрации по адресу https://dashboard.stripe.com/test/apikeys
 <blockquote>
-STRIPE_PUBLIC_KEY=<YOUR_STRIPE_PUBLIC_KEY><br/>
-STRIPE_SECRET_KEY=<YOUR_STRIPE_SECRET_KEY>
+STRIPE_PUBLIC_KEY=pk_test_51Mdb...Q5n<br/>
+STRIPE_SECRET_KEY=sk_test_51Mdb...eVc
 </blockquote>
 
 Ключ STRIPE_ENDPOINT_SECRET необходим для подтвержения платежа.<br/>
@@ -38,7 +38,7 @@ STRIPE_SECRET_KEY=<YOUR_STRIPE_SECRET_KEY>
 Затем в новом окне терминала запустите stripe на прослушивание (https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local)
 <pre>./stripe listen --forward-to localhost:8080/webhook</pre>
 В терминале отобразится ключ (например whsec_683...7a13ff), его нужно записать вместо <code><YOUR_STRIPE_ENDPOINT_SECRET></code>
-  <blockquote>STRIPE_ENDPOINT_SECRET=<code><YOUR_STRIPE_ENDPOINT_SECRET></code></blockquote>
+  <blockquote>STRIPE_ENDPOINT_SECRET=whsec_683...7a13ff</blockquote>
 
 Создайте  root-пользователя
 <pre>python manage.py createsuperuser</pre>
